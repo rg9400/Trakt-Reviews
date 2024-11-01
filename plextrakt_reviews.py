@@ -11,7 +11,7 @@ import sqlite3
 PLEX_URL = 'http://localhost:32400'
 PLEX_TOKEN = "YOURTOKEN"
 TRAKT_CLIENT_ID = "YOURTRAKTCLIENTID"
-TRAKT_USER_ID="YOURTRAKTUSERID"
+TRAKT_USER_ID = "YOURTRAKTUSERID"
 ###############################################################################
 
 ## CODE BELOW ##

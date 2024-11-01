@@ -1,7 +1,7 @@
 # Plextrakt-Reviews
 Pull reviews from Trakt into Plex. Only one way, does not push reviews from Plex into Trakt. It will also update the rating based on the one given in the review (if available). Should work for Movies, Shows, Seasons, and Episodes (though I have only tested with Movies and Seasons for now). This creates a sqlite database to prevent unnecessarily updating data on Plex end after processing reviews, so it should only update new reviews or when an item is added to Plex whose review has yet to be processed.
 
-Please note that this uses the GraphQL community API for Plex which may not be officially supported and is directly hitting Plex's servers, not your own server. These reviews are published at Plex's community end but should only be visible to friends. 
+Please note that this uses the GraphQL community API for Plex which may not be officially supported and is directly hitting Plex's servers, not your own server. These reviews are published at Plex's community end but should only be visible to friends, however you should ensure you do want your Trakt reviews published like that. 
 
 Requires plexapi 4.4.1 or higher and requests. Run python -m pip install --upgrade plexapi requests with python replaced with whatever your python3 binary is to make sure you have the latest one.
 

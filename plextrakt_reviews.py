@@ -64,7 +64,7 @@ def check_if_values_match(db_file, table_name, id, timestamp):
 
 def main():
     #Check if database and table exist, else create them
-    db_file = 'reviews.db'
+    db_file = os.path.join(os.path.dirname(sys.argv[0]), 'reviews.db')
     table_name = 'reviews'
     con = sqlite3.connect(db_file)
     cur = con.cursor()

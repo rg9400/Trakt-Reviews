@@ -173,8 +173,8 @@ def main():
 
         # If item's Plex guid was found, send the review to Plex
         if metadata:
-            #Truncate review to 3000 characters due to Plex limit
-            message = comment[:3000] if len(comment) > 3000 else comment
+            #Truncate review to 10000 characters due to Plex limit
+            message = comment[:10000] if len(comment) > 3000 else comment
             input = {"metadata":metadata, "hasSpoilers": spoiler, "message": message}
             if rating:
                 input['rating'] = rating

@@ -194,7 +194,7 @@ def main():
                 cur = con.cursor()
                 insert = (comment_id, comment_timestamp)
                 cur.execute("""
-                    INSERT INTO reviews VALUES
+                    UPSERT INTO reviews VALUES
                         {}
                 """.format(insert))
                 con.commit()

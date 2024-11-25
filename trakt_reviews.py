@@ -76,7 +76,7 @@ def main():
         log.warning("Need to create reviews table")
         if sqlite3.OperationalError:
             try:
-                cur.execute("CREATE TABLE reviews(id, updated_at)")
+                cur.execute("CREATE TABLE reviews(id type UNIQUE, updated_at)")
             except sqlite3.Error() as e:
                 log.warning(e, " occured")
     con.commit()
@@ -194,8 +194,9 @@ def main():
                 cur = con.cursor()
                 insert = (comment_id, comment_timestamp)
                 cur.execute("""
-                    UPSERT INTO reviews VALUES
+                    INSERT INTO reviews VALUES
                         {}
+                            ON CONFLICT(id) DO UPDATE SET updated_at=excluded.updated_at
                 """.format(insert))
                 con.commit()
                 con.close()

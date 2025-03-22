@@ -185,7 +185,7 @@ def main():
             
             response_data = response.json()
             status_code = response.status_code
-            status = response_data.get('data', None).get('createReview', None).get('status', None)
+            status = response_data.get('data', {}).get('createReview', {}).get('status', None)
 
             # If review was successful, add to DB to prevent future processing
             if status_code == 200 and status in ("PENDING", "PUBLISHED"):

@@ -2,6 +2,7 @@
 import requests
 import os
 import sys
+import time
 from logging.handlers import RotatingFileHandler 
 from logging import DEBUG, INFO, getLogger, Formatter, StreamHandler
 from plexapi.server import PlexServer
@@ -202,6 +203,8 @@ def main():
                 con.close()
             else:
                 log.warning("Review was not successfuly submitted to Plex. Status Code is {}, Status is {}, and reponse was {}".format(status_code, status, response.json()))
+
+            time.sleep(60)
 
 if __name__ == "__main__":
     main()

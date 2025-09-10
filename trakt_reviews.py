@@ -175,6 +175,7 @@ def main():
 
         # If item's Plex guid was found, send the review to Plex
         if metadata:
+            log.warning("Processing comment {} for {}".format(comment_id,title))
             #Truncate review to 10000 characters due to Plex limit
             message = comment[:10000] if len(comment) > 10000 else comment
             input = {"metadata":metadata, "hasSpoilers": spoiler, "message": message}
@@ -186,7 +187,10 @@ def main():
             
             response_data = response.json()
             status_code = response.status_code
-            status = response_data.get('data', {}).get('createReview', {}).get('status', None)
+            try:
+                status = response_data.get('data', {}).get('createReview', {}).get('status', None)
+            except:
+                log.warning("Failed to process comment, response_data is {}".format(response_data))
 
             # If review was successful, add to DB to prevent future processing
             if status_code == 200 and status in ("PENDING", "PUBLISHED"):
